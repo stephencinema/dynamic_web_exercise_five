@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
-const homePage = require("./routes/index.js");
-const aboutPage = require("./routes/about.js");
+const indexRoute = require("./routes/index");
 
-app.use("/", homePage);
-app.use("/about", aboutPage);
+app.use("/", indexRoute);
 
-app.use("/images", express.static("public"));
-
-app.listen(port, () => console.log("Working!"));
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
